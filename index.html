@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renegocie com a 99</title>
+  <style>
+    :root {
+      --yellow: #f4d400;
+      --black: #111111;
+      --text-soft: rgba(17, 17, 17, 0.72);
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: var(--yellow);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 24px;
+      margin: 0 auto 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      background: var(--yellow);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      min-width: 180px;
+      padding: 16px 24px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* BOTÃO PRINCIPAL (APP) - ULTRA CHAMATIVO */
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      transform: scale(1.05); /* Levemente maior que os outros */
+      animation: pulse 2s infinite;
+    }
+
+    /* Efeito de brilho passando pelo botão */
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 20%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(30deg);
+      transition: none;
+      animation: shine 3s infinite;
+    }
+
+    /* BOTÕES SECUNDÁRIOS - MAIS DISCRETOS */
+    .btn-secondary, .btn-outline {
+      background: transparent;
+      color: var(--black);
+      border: 1px solid rgba(17, 17, 17, 0.2);
+      box-shadow: none;
+      font-weight: 500; /* Texto mais fino para reduzir peso visual */
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    .btn-secondary:hover, .btn-outline:hover {
+      opacity: 1;
+      background: rgba(17, 17, 17, 0.05);
+    }
+
+    /* ANIMAÇÕES */
+    @keyframes pulse {
+      0% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); }
+      50% { transform: scale(1.1); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); }
+      100% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); }
+    }
+
+    @keyframes shine {
+      0% { left: -60%; }
+      20% { left: 120%; }
+      100% { left: 120%; }
+    }
+
+    @media (max-width: 640px) {
+      .buttons {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
+      .btn-primary {
+        transform: scale(1); /* Reseta escala no mobile para não quebrar layout */
+        animation: pulse-mobile 2s infinite;
+      }
+    }
+
+    @keyframes pulse-mobile {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <img src="https://i.ibb.co/FLhK656g/unnamed.png" alt="Logo 99" class="logo" />
+
+    <h1>Renegocie seu empréstimo de forma simples</h1>
+
+    <p>
+      Escolha a melhor opção para renegociar sua pendência com rapidez e segurança.
+    </p>
+
+    <div class="buttons">
+        <a href="https://negociemais.com/99Pay-wkc" class="btn btn-primary">WhatsApp</a>
+      
+        <a href="https://negociemais.com/99Pay-b08" class="btn btn-secondary">App 99Pay</a>  
+        <a href="https://negociemais.com/99Pay-tln" class="btn btn-outline">Central de atendimento</a>
+    </div>
+  </main>
+</body>
+</html>
