@@ -88,11 +88,10 @@
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
       position: relative;
       overflow: hidden;
-      transform: scale(1.05); /* Levemente maior que os outros */
+      transform: scale(1.05);
       animation: pulse 2s infinite;
     }
 
-    /* Efeito de brilho passando pelo botão */
     .btn-primary::after {
       content: "";
       position: absolute;
@@ -106,52 +105,75 @@
       animation: shine 3s infinite;
     }
 
-    /* BOTÕES SECUNDÁRIOS - MAIS DISCRETOS */
-    .btn-secondary, .btn-outline {
+    .btn-secondary,
+    .btn-outline {
       background: transparent;
       color: var(--black);
       border: 1px solid rgba(17, 17, 17, 0.2);
       box-shadow: none;
-      font-weight: 500; /* Texto mais fino para reduzir peso visual */
+      font-weight: 500;
       opacity: 0.8;
       font-size: 0.95rem;
     }
 
-    .btn-secondary:hover, .btn-outline:hover {
+    .btn-secondary:hover,
+    .btn-outline:hover {
       opacity: 1;
       background: rgba(17, 17, 17, 0.05);
     }
 
-    /* ANIMAÇÕES */
     @keyframes pulse {
-      0% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); }
-      50% { transform: scale(1.1); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); }
-      100% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); }
+      0% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      }
+      100% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      }
     }
 
     @keyframes shine {
-      0% { left: -60%; }
-      20% { left: 120%; }
-      100% { left: 120%; }
+      0% {
+        left: -60%;
+      }
+      20% {
+        left: 120%;
+      }
+      100% {
+        left: 120%;
+      }
     }
 
     @media (max-width: 640px) {
       .buttons {
         flex-direction: column;
       }
+
       .btn {
         width: 100%;
       }
+
       .btn-primary {
-        transform: scale(1); /* Reseta escala no mobile para não quebrar layout */
+        transform: scale(1);
         animation: pulse-mobile 2s infinite;
       }
     }
 
     @keyframes pulse-mobile {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.03);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -166,11 +188,38 @@
     </p>
 
     <div class="buttons">
-        <a href="https://negociemais.com/99Pay-nd8" class="btn btn-primary">WhatsApp</a>
-      
-        <a href="https://negociemais.com/99Pay-ebh" class="btn btn-primary">App 99Pay</a>  
-        <a href="https://negociemais.com/99Pay-nh5" class="btn btn-outline">Central de atendimento</a>
+      <a href="https://negociemais.com/99Pay-nd8" class="btn btn-primary">WhatsApp</a>
+
+      <a id="btn-app-99pay" href="https://negociemais.com/99Pay-ebh" class="btn btn-primary">App 99Pay</a>
+
+      <a href="https://negociemais.com/99Pay-nh5" class="btn btn-outline">Central de atendimento</a>
     </div>
   </main>
+
+  <script>
+    (function () {
+      var btnApp = document.getElementById("btn-app-99pay");
+      var trackingUrl = "https://negociemais.com/99Pay-ebh";
+      var isAndroid = /Android/i.test(navigator.userAgent || "");
+
+      if (!btnApp || !isAndroid) {
+        return;
+      }
+
+      var fallbackUrl = encodeURIComponent(trackingUrl);
+
+      var chromeIntent =
+        "intent://d.didiglobal.com/WIBgTdr" +
+        "#Intent;" +
+        "scheme=https;" +
+        "package=com.android.chrome;" +
+        "S.browser_fallback_url=" + fallbackUrl + ";" +
+        "end";
+
+      btnApp.setAttribute("href", chromeIntent);
+      btnApp.setAttribute("target", "_blank");
+      btnApp.setAttribute("rel", "noopener noreferrer external");
+    })();
+  </script>
 </body>
 </html>
